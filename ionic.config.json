@@ -1,0 +1,7 @@
+{
+  "name": "UniTask",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
