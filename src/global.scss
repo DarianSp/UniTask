@@ -10,6 +10,7 @@
  */
 
 /* Core CSS required for Ionic components to work properly */
+@import '@ionic/angular/css/palettes/dark.class.css';
 @import "@ionic/angular/css/core.css";
 
 /* Basic CSS for apps built with Ionic */
@@ -35,3 +36,105 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import '@ionic/angular/css/palettes/dark.system.css';
+html.ion-palette-dark {
+  color-scheme: dark;
+}
+
+html.ion-palette-dark ion-content,
+html.ion-palette-dark ion-toolbar,
+html.ion-palette-dark ion-header {
+  --background: #0f172a !important;
+}
+
+html.ion-palette-dark .page-container {
+  background: #0f172a;
+}
+
+html.ion-palette-dark .header-container h1,
+html.ion-palette-dark .header-content ion-title,
+html.ion-palette-dark .hero-section h1,
+html.ion-palette-dark .section-header h2,
+html.ion-palette-dark .section-title h2 {
+  color: #f8fafc !important;
+}
+
+html.ion-palette-dark .header-container p,
+html.ion-palette-dark .welcome-text,
+html.ion-palette-dark .hero-description,
+html.ion-palette-dark .section-header p {
+  color: #94a3b8 !important;
+}
+
+html.ion-palette-dark .task-card,
+html.ion-palette-dark .summary-card,
+html.ion-palette-dark .resource-card,
+html.ion-palette-dark .month-card,
+html.ion-palette-dark .timeline-card,
+html.ion-palette-dark .form-section,
+html.ion-palette-dark .setting-card,
+html.ion-palette-dark .bluetooth-card,
+html.ion-palette-dark .profile-card,
+html.ion-palette-dark .news-card,
+html.ion-palette-dark .podcast-card,
+html.ion-palette-dark .photo-card,
+html.ion-palette-dark .empty-photo-card,
+html.ion-palette-dark .empty-qr-card,
+html.ion-palette-dark .qr-result-card {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+}
+
+html.ion-palette-dark .task-card h3,
+html.ion-palette-dark .summary-card strong,
+html.ion-palette-dark .resource-card strong,
+html.ion-palette-dark .timeline-card h3,
+html.ion-palette-dark .setting-content h3,
+html.ion-palette-dark .bluetooth-card h3,
+html.ion-palette-dark .news-card h3,
+html.ion-palette-dark .podcast-card h3,
+html.ion-palette-dark .empty-photo-card h3,
+html.ion-palette-dark .empty-qr-card h3 {
+  color: #f8fafc !important;
+}
+
+html.ion-palette-dark .task-date,
+html.ion-palette-dark .resource-card span,
+html.ion-palette-dark .timeline-card p,
+html.ion-palette-dark .setting-content p,
+html.ion-palette-dark .bluetooth-description p,
+html.ion-palette-dark .news-card p,
+html.ion-palette-dark .podcast-card p,
+html.ion-palette-dark .empty-photo-card p,
+html.ion-palette-dark .empty-qr-card p {
+  color: #94a3b8 !important;
+}
+
+html.ion-palette-dark ion-tab-bar {
+  --background: #111827;
+  border-top-color: #334155;
+}
+
+/* Tema claro - CRUD de Tareas */
+
+html:not(.ion-palette-dark) .tareas-page ion-input,
+html:not(.ion-palette-dark) .tareas-page ion-select {
+  --background: #ffffff !important;
+  --color: #1e293b !important;
+  --placeholder-color: #94a3b8 !important;
+  --placeholder-opacity: 1 !important;
+  --border-color: #cbd5e1 !important;
+}
+
+html:not(.ion-palette-dark)
+  .tareas-page
+  ion-input::part(native) {
+  color: #1e293b !important;
+  -webkit-text-fill-color: #1e293b !important;
+  caret-color: #2563eb !important;
+}
+
+html:not(.ion-palette-dark)
+  .tareas-page
+  ion-select::part(text) {
+  color: #1e293b !important;
+}

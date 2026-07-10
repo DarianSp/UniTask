@@ -1,0 +1,465 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <div class="header-container">
+      <div>
+        <p>Herramientas académicas</p>
+        <h1>Recursos</h1>
+      </div>
+
+      <div class="header-icon">
+        <ion-icon name="map-outline"></ion-icon>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="page-container">
+
+    <!-- Accesos rápidos -->
+    <section class="resource-grid">
+      <button
+        type="button"
+        class="resource-card"
+        (click)="escanearQr()"
+        [disabled]="escaneandoQr"
+      >
+        <div class="resource-icon orange">
+          @if (escaneandoQr) {
+            <ion-spinner name="crescent"></ion-spinner>
+          } @else {
+            <ion-icon name="qr-code-outline"></ion-icon>
+          }
+        </div>
+
+        <strong>Escanear QR</strong>
+        <span>Registrar asistencia</span>
+      </button>
+
+      <button
+        type="button"
+        class="resource-card"
+        (click)="tomarFoto()"
+        [disabled]="cargandoCamara"
+      >
+        <div class="resource-icon blue">
+          @if (cargandoCamara) {
+            <ion-spinner name="crescent"></ion-spinner>
+          } @else {
+            <ion-icon name="camera-outline"></ion-icon>
+          }
+        </div>
+
+        <strong>Cámara</strong>
+        <span>Guardar apuntes</span>
+      </button>
+
+      <button
+        type="button"
+        class="resource-card"
+        (click)="irAPodcasts(seccionPodcasts)"
+      >
+        <div class="resource-icon purple">
+          <ion-icon name="musical-notes-outline"></ion-icon>
+        </div>
+
+        <strong>Podcasts</strong>
+        <span>Contenido educativo</span>
+      </button>
+    </section>
+
+    <!-- Selector oculto para QR en navegador -->
+    <input
+      #qrFileInput
+      type="file"
+      accept="image/*"
+      class="hidden-file-input"
+      (change)="leerQrDesdeImagen($event)"
+    />
+
+    <!-- Escáner QR -->
+    <section class="qr-section">
+      <div class="section-header">
+        <div>
+          <p>Asistencia y contenido</p>
+          <h2>Escáner QR</h2>
+        </div>
+
+        <ion-button
+          class="qr-button"
+          (click)="escanearQr()"
+          [disabled]="escaneandoQr"
+        >
+          @if (escaneandoQr) {
+            <ion-spinner
+              name="crescent"
+              slot="start"
+            ></ion-spinner>
+          } @else {
+            <ion-icon
+              name="scan-outline"
+              slot="start"
+            ></ion-icon>
+          }
+
+          Escanear
+        </ion-button>
+      </div>
+
+      @if (resultadoQr) {
+        <article class="qr-result-card">
+          <div class="qr-result-icon">
+            <ion-icon
+              name="checkmark-circle-outline"
+            ></ion-icon>
+          </div>
+
+          <div class="qr-result-content">
+            <span>Contenido detectado</span>
+            <p>{{ resultadoQr }}</p>
+          </div>
+
+          <div class="qr-result-actions">
+            <button
+              type="button"
+              aria-label="Copiar contenido"
+              (click)="copiarResultadoQr()"
+            >
+              <ion-icon name="copy-outline"></ion-icon>
+            </button>
+
+            <button
+              type="button"
+              aria-label="Eliminar resultado"
+              (click)="limpiarResultadoQr()"
+            >
+              <ion-icon
+                name="close-circle-outline"
+              ></ion-icon>
+            </button>
+          </div>
+        </article>
+      } @else {
+        <article class="empty-qr-card">
+          <div class="empty-qr-icon">
+            <ion-icon name="qr-code-outline"></ion-icon>
+          </div>
+
+          <div>
+            <h3>Ningún código escaneado</h3>
+
+            <p>
+              En el navegador selecciona una imagen con un
+              código QR. En el teléfono se abrirá el escáner.
+            </p>
+          </div>
+        </article>
+      }
+
+      @if (mensajeQr) {
+        <div class="qr-message">
+          {{ mensajeQr }}
+        </div>
+      }
+    </section>
+
+    <!-- Cámara -->
+    <section class="camera-section">
+      <div class="section-header camera-header">
+        <div>
+          <p>Multimedia</p>
+          <h2>Foto de apuntes</h2>
+        </div>
+      </div>
+
+      <div class="camera-actions">
+        <ion-button
+          expand="block"
+          class="camera-button"
+          (click)="tomarFoto()"
+          [disabled]="cargandoCamara"
+        >
+          @if (cargandoCamara) {
+            <ion-spinner
+              name="crescent"
+              slot="start"
+            ></ion-spinner>
+          } @else {
+            <ion-icon
+              name="camera-outline"
+              slot="start"
+            ></ion-icon>
+          }
+
+          Tomar foto
+        </ion-button>
+
+        <ion-button
+          expand="block"
+          fill="outline"
+          class="gallery-button"
+          (click)="elegirImagen()"
+          [disabled]="cargandoCamara"
+        >
+          <ion-icon
+            name="image-outline"
+            slot="start"
+          ></ion-icon>
+
+          Galería
+        </ion-button>
+      </div>
+
+      @if (fotoApunte) {
+        <article class="photo-card">
+          <img
+            [src]="fotoApunte"
+            alt="Fotografía de apuntes académicos"
+          />
+
+          <div class="photo-footer">
+            <div>
+              <strong>Apunte académico</strong>
+              <span>Imagen agregada desde UniTask</span>
+            </div>
+
+            <button
+              type="button"
+              class="delete-photo-button"
+              aria-label="Eliminar fotografía"
+              (click)="eliminarFoto()"
+            >
+              <ion-icon
+                name="close-circle-outline"
+              ></ion-icon>
+            </button>
+          </div>
+        </article>
+      } @else {
+        <article class="empty-photo-card">
+          <div class="empty-photo-icon">
+            <ion-icon name="image-outline"></ion-icon>
+          </div>
+
+          <div>
+            <h3>No hay imágenes todavía</h3>
+
+            <p>
+              Toma una foto o selecciona una imagen de tus
+              apuntes.
+            </p>
+          </div>
+        </article>
+      }
+
+      @if (mensajeCamara) {
+        <div class="camera-message">
+          {{ mensajeCamara }}
+        </div>
+      }
+    </section>
+
+    <!-- Podcasts -->
+    <section
+      #seccionPodcasts
+      class="podcast-section"
+    >
+      <div class="section-header">
+        <div>
+          <p>Contenido educativo</p>
+          <h2>Podcasts</h2>
+        </div>
+
+        <div class="podcast-count">
+          {{ podcasts.length }} episodios
+        </div>
+      </div>
+
+      @if (podcastActual) {
+        <article class="audio-player">
+          <div class="player-header">
+            <div class="player-cover">
+              <ion-icon
+                name="musical-notes-outline"
+              ></ion-icon>
+            </div>
+
+            <div class="player-information">
+              <span>Reproduciendo ahora</span>
+              <h3>{{ podcastActual.titulo }}</h3>
+              <p>{{ podcastActual.categoria }}</p>
+            </div>
+          </div>
+
+          <ion-range
+            [min]="0"
+            [max]="duracionPodcast || 1"
+            [value]="tiempoPodcast"
+            [disabled]="duracionPodcast === 0"
+            (ionChange)="cambiarProgreso($event)"
+          ></ion-range>
+
+          <div class="player-times">
+            <span>
+              {{ formatearTiempo(tiempoPodcast) }}
+            </span>
+
+            <span>
+              {{ formatearTiempo(duracionPodcast) }}
+            </span>
+          </div>
+
+          <div class="player-controls">
+            <button
+              type="button"
+              class="stop-button"
+              aria-label="Detener"
+              (click)="detenerPodcast()"
+            >
+              <ion-icon name="stop-outline"></ion-icon>
+            </button>
+
+            <button
+              type="button"
+              class="play-main-button"
+              aria-label="Reproducir o pausar"
+              (click)="reproducirPodcast(podcastActual)"
+            >
+              <ion-icon
+                [name]="
+                  reproduciendoPodcast
+                    ? 'pause-outline'
+                    : 'play-outline'
+                "
+              ></ion-icon>
+            </button>
+
+            <button
+              type="button"
+              class="restart-button"
+              aria-label="Reiniciar"
+              (click)="detenerPodcast()"
+            >
+              <ion-icon name="refresh-outline"></ion-icon>
+            </button>
+          </div>
+        </article>
+      }
+
+      <div class="podcast-list">
+        @for (podcast of podcasts; track podcast.id) {
+          <article
+            class="podcast-card"
+            [class.active]="esPodcastActual(podcast)"
+          >
+            <div class="podcast-icon">
+              <ion-icon
+                name="musical-notes-outline"
+              ></ion-icon>
+            </div>
+
+            <div class="podcast-details">
+              <span>{{ podcast.categoria }}</span>
+
+              <h3>{{ podcast.titulo }}</h3>
+
+              <p>{{ podcast.descripcion }}</p>
+
+              <small>
+                Duración aproximada:
+                {{ podcast.duracionTexto }}
+              </small>
+            </div>
+
+            <button
+              type="button"
+              class="podcast-play-button"
+              [attr.aria-label]="
+                esPodcastActual(podcast) &&
+                reproduciendoPodcast
+                  ? 'Pausar podcast'
+                  : 'Reproducir podcast'
+              "
+              (click)="reproducirPodcast(podcast)"
+            >
+              <ion-icon
+                [name]="
+                  esPodcastActual(podcast) &&
+                  reproduciendoPodcast
+                    ? 'pause-outline'
+                    : 'play-outline'
+                "
+              ></ion-icon>
+            </button>
+          </article>
+        }
+      </div>
+
+      @if (mensajePodcast) {
+        <div class="podcast-message">
+          {{ mensajePodcast }}
+        </div>
+      }
+    </section>
+
+    <app-noticias-lista></app-noticias-lista>
+
+    <!-- Mapa -->
+    <section class="map-section">
+      <div class="section-header">
+        <div>
+          <p>Geolocalización</p>
+          <h2>Mapa interactivo</h2>
+        </div>
+
+        <ion-button
+          class="location-button"
+          [disabled]="cargandoUbicacion"
+          (click)="obtenerMiUbicacion()"
+        >
+          @if (cargandoUbicacion) {
+            <ion-spinner
+              name="crescent"
+              slot="start"
+            ></ion-spinner>
+          } @else {
+            <ion-icon
+              name="locate-outline"
+              slot="start"
+            ></ion-icon>
+          }
+
+          Mi ubicación
+        </ion-button>
+      </div>
+
+      <div id="mapa-recursos"></div>
+
+      @if (
+        latitud !== undefined &&
+        longitud !== undefined
+      ) {
+        <div class="coordinates-card">
+          <strong>Ubicación obtenida</strong>
+
+          <span>
+            Latitud:
+            {{ latitud | number: '1.5-5' }}
+          </span>
+
+          <span>
+            Longitud:
+            {{ longitud | number: '1.5-5' }}
+          </span>
+        </div>
+      }
+
+      @if (mensajeError) {
+        <div class="error-card">
+          {{ mensajeError }}
+        </div>
+      }
+    </section>
+
+  </div>
+</ion-content>

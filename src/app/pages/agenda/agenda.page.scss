@@ -1,0 +1,614 @@
+ion-header,
+ion-toolbar,
+ion-content {
+  --background: #f8fafc;
+}
+
+ion-toolbar {
+  --min-height: 90px;
+  --padding-start: 18px;
+  --padding-end: 18px;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.header-label {
+  margin: 0 0 4px;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.header-container h1 {
+  margin: 0;
+  color: #0f172a;
+  font-size: 26px;
+  font-weight: 800;
+}
+
+.network-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 11px;
+  background: #dcfce7;
+  border-radius: 14px;
+  color: #15803d;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.network-status.offline {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.network-status ion-icon {
+  font-size: 17px;
+}
+
+.page-container {
+  padding: 6px 16px 120px;
+}
+
+.month-card {
+  padding: 20px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 24px;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.07);
+}
+
+.month-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.month-header p {
+  margin: 0 0 4px;
+  color: #64748b;
+  font-size: 11px;
+}
+
+.month-header h2 {
+  margin: 0;
+  color: #0f172a;
+  font-size: 21px;
+}
+
+.calendar-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: #dbeafe;
+  border-radius: 16px;
+  color: #2563eb;
+}
+
+.calendar-icon ion-icon {
+  font-size: 23px;
+}
+
+.week-days,
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+
+.week-days {
+  margin-bottom: 8px;
+}
+
+.week-days span {
+  color: #94a3b8;
+  font-size: 10px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.calendar-grid button,
+.empty-day {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  background: transparent;
+  border: none;
+  border-radius: 13px;
+  color: #334155;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.calendar-grid button:hover {
+  background: #eff6ff;
+}
+
+.calendar-grid button.selected {
+  background: #2563eb;
+  color: #ffffff;
+  box-shadow: 0 8px 18px rgba(37, 99, 235, 0.25);
+}
+
+.event-dot {
+  position: absolute;
+  bottom: 5px;
+  width: 5px;
+  height: 5px;
+  background: #ffffff;
+  border-radius: 50%;
+}
+
+.calendar-grid button:not(.selected) .event-dot {
+  background: #2563eb;
+}
+
+.event-dot.danger {
+  background: #ef4444 !important;
+}
+
+.event-dot.warning {
+  background: #f59e0b !important;
+}
+
+.selected-date-section,
+.upcoming-section {
+  margin-top: 27px;
+}
+
+.section-header,
+.section-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.section-header p {
+  margin: 0 0 3px;
+  color: #64748b;
+  font-size: 11px;
+}
+
+.section-header h2,
+.section-title h2 {
+  margin: 0;
+  color: #0f172a;
+  font-size: 19px;
+}
+
+.section-title span {
+  color: #64748b;
+  font-size: 10px;
+}
+
+.event-card {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 12px;
+  padding: 17px;
+  background: #ffffff;
+  border-left: 4px solid #2563eb;
+  border-radius: 18px;
+  box-shadow: 0 7px 22px rgba(15, 23, 42, 0.05);
+}
+
+.event-card.exam {
+  border-left-color: #ef4444;
+}
+
+.event-card.meeting {
+  border-left-color: #f59e0b;
+}
+
+.event-time {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  min-width: 66px;
+  padding-right: 14px;
+  border-right: 1px solid #e2e8f0;
+  color: #2563eb;
+}
+
+.event-time ion-icon {
+  font-size: 19px;
+}
+
+.event-time span {
+  color: #334155;
+  font-size: 10px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.event-content {
+  flex: 1;
+}
+
+.event-heading {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.event-content h3 {
+  margin: 7px 0 8px;
+  color: #0f172a;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.event-content p {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 0;
+  color: #64748b;
+  font-size: 10px;
+}
+
+.event-content p ion-icon {
+  font-size: 14px;
+}
+
+.empty-day-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px;
+  background: #ffffff;
+  border: 1px dashed #cbd5e1;
+  border-radius: 19px;
+}
+
+.empty-day-card > ion-icon {
+  padding: 12px;
+  background: #dcfce7;
+  border-radius: 14px;
+  color: #16a34a;
+  font-size: 28px;
+}
+
+.empty-day-card h3 {
+  margin: 0 0 4px;
+  color: #0f172a;
+  font-size: 15px;
+}
+
+.empty-day-card p {
+  margin: 0;
+  color: #64748b;
+  font-size: 11px;
+}
+
+.timeline {
+  position: relative;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: 7px;
+  width: 2px;
+  background: #e2e8f0;
+}
+
+.timeline-item {
+  position: relative;
+  display: flex;
+  gap: 15px;
+  margin-bottom: 13px;
+}
+
+.timeline-marker {
+  z-index: 1;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  margin-top: 18px;
+  background: #2563eb;
+  border: 4px solid #dbeafe;
+  border-radius: 50%;
+}
+
+.timeline-marker.exam {
+  background: #ef4444;
+  border-color: #fee2e2;
+}
+
+.timeline-marker.meeting {
+  background: #f59e0b;
+  border-color: #fef3c7;
+}
+
+.timeline-card {
+  flex: 1;
+  padding: 16px;
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.05);
+}
+
+.timeline-date {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #64748b;
+  font-size: 10px;
+}
+
+.timeline-date ion-icon {
+  color: #2563eb;
+  font-size: 14px;
+}
+
+.timeline-card h3 {
+  margin: 8px 0 5px;
+  color: #0f172a;
+  font-size: 14px;
+}
+
+.timeline-card p {
+  margin: 0;
+  color: #64748b;
+  font-size: 10px;
+}
+
+.connection-card {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-top: 24px;
+  padding: 17px;
+  background: #ecfdf5;
+  border: 1px solid #bbf7d0;
+  border-radius: 19px;
+}
+
+.connection-card.offline {
+  background: #fff1f2;
+  border-color: #fecdd3;
+}
+
+.connection-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 47px;
+  height: 47px;
+  background: #dcfce7;
+  border-radius: 15px;
+  color: #16a34a;
+}
+
+.connection-card.offline .connection-icon {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.connection-icon ion-icon {
+  font-size: 23px;
+}
+
+.connection-card h3 {
+  margin: 0 0 4px;
+  color: #0f172a;
+  font-size: 14px;
+}
+
+.connection-card p {
+  margin: 0;
+  color: #64748b;
+  font-size: 10px;
+  line-height: 1.4;
+}
+
+@media (min-width: 768px) {
+  .page-container {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+}
+/* ================================= */
+/* MODO OSCURO - PÁGINA AGENDA */
+/* ================================= */
+
+:host-context(.ion-palette-dark) ion-header,
+:host-context(.ion-palette-dark) ion-toolbar,
+:host-context(.ion-palette-dark) ion-content {
+  --background: #0f172a;
+}
+
+:host-context(.ion-palette-dark) .page-container {
+  background: #0f172a;
+}
+
+/* Encabezado */
+
+:host-context(.ion-palette-dark) .header-container h1 {
+  color: #f8fafc !important;
+}
+
+:host-context(.ion-palette-dark) .header-label {
+  color: #94a3b8 !important;
+}
+
+/* Calendario */
+
+:host-context(.ion-palette-dark) .month-card {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
+}
+
+:host-context(.ion-palette-dark) .month-header p {
+  color: #94a3b8 !important;
+}
+
+:host-context(.ion-palette-dark) .month-header h2 {
+  color: #f8fafc !important;
+}
+
+:host-context(.ion-palette-dark) .calendar-icon {
+  background: #1e3a8a;
+  color: #93c5fd;
+}
+
+:host-context(.ion-palette-dark) .week-days span {
+  color: #94a3b8 !important;
+}
+
+:host-context(.ion-palette-dark) .calendar-grid button {
+  color: #cbd5e1 !important;
+}
+
+:host-context(.ion-palette-dark) .calendar-grid button:hover {
+  background: #334155;
+}
+
+:host-context(.ion-palette-dark) .calendar-grid button.selected {
+  background: #2563eb;
+  color: #ffffff !important;
+  box-shadow: 0 8px 18px rgba(37, 99, 235, 0.35);
+}
+
+:host-context(.ion-palette-dark)
+  .calendar-grid button:not(.selected)
+  .event-dot {
+  background: #60a5fa;
+}
+
+/* Fecha seleccionada */
+
+:host-context(.ion-palette-dark) .section-header p {
+  color: #94a3b8 !important;
+}
+
+:host-context(.ion-palette-dark) .section-header h2 {
+  color: #f8fafc !important;
+}
+
+/* Tarjetas de eventos */
+
+:host-context(.ion-palette-dark) .event-card {
+  background: #1e293b !important;
+  box-shadow: 0 7px 22px rgba(0, 0, 0, 0.22);
+}
+
+:host-context(.ion-palette-dark) .event-time {
+  border-right-color: #334155;
+}
+
+:host-context(.ion-palette-dark) .event-time span {
+  color: #cbd5e1 !important;
+}
+
+:host-context(.ion-palette-dark) .event-content h3 {
+  color: #f8fafc !important;
+}
+
+:host-context(.ion-palette-dark) .event-content p {
+  color: #94a3b8 !important;
+}
+
+/* Tarjeta de día libre */
+
+:host-context(.ion-palette-dark) .empty-day-card {
+  background: #1e293b !important;
+  border-color: #475569 !important;
+}
+
+:host-context(.ion-palette-dark) .empty-day-card h3 {
+  color: #f8fafc !important;
+}
+
+:host-context(.ion-palette-dark) .empty-day-card p {
+  color: #94a3b8 !important;
+}
+
+:host-context(.ion-palette-dark) .empty-day-card > ion-icon {
+  background: #14532d;
+  color: #86efac;
+}
+
+/* Próximos eventos */
+
+:host-context(.ion-palette-dark) .section-title h2 {
+  color: #f8fafc !important;
+}
+
+:host-context(.ion-palette-dark) .section-title span {
+  color: #94a3b8 !important;
+}
+
+:host-context(.ion-palette-dark) .timeline::before {
+  background: #334155;
+}
+
+:host-context(.ion-palette-dark) .timeline-card {
+  background: #1e293b !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.22);
+}
+
+:host-context(.ion-palette-dark) .timeline-date {
+  color: #94a3b8 !important;
+}
+
+:host-context(.ion-palette-dark) .timeline-card h3 {
+  color: #f8fafc !important;
+}
+
+:host-context(.ion-palette-dark) .timeline-card p {
+  color: #94a3b8 !important;
+}
+
+/* Estado de conexión */
+
+:host-context(.ion-palette-dark) .connection-card {
+  background: #123524;
+  border-color: #166534;
+}
+
+:host-context(.ion-palette-dark) .connection-card.offline {
+  background: #3f1720;
+  border-color: #881337;
+}
+
+:host-context(.ion-palette-dark) .connection-icon {
+  background: #14532d;
+  color: #86efac;
+}
+
+:host-context(.ion-palette-dark)
+  .connection-card.offline
+  .connection-icon {
+  background: #7f1d1d;
+  color: #fecaca;
+}
+
+:host-context(.ion-palette-dark) .connection-card h3 {
+  color: #f8fafc !important;
+}
+
+:host-context(.ion-palette-dark) .connection-card p {
+  color: #cbd5e1 !important;
+}
+
+.page-container {
+  min-height: 100%;
+  padding-bottom: 150px;
+}

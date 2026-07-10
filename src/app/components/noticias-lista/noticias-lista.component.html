@@ -1,0 +1,148 @@
+<section class="news-section">
+  <ion-refresher
+    slot="fixed"
+    (ionRefresh)="actualizarNoticias($event)"
+  >
+    <ion-refresher-content
+      pullingText="Desliza para actualizar"
+      refreshingSpinner="crescent"
+      refreshingText="Actualizando noticias..."
+    ></ion-refresher-content>
+  </ion-refresher>
+
+  <div class="section-header">
+    <div>
+      <p>Servicios web</p>
+      <h2>Noticias tecnológicas</h2>
+    </div>
+
+    <ion-button
+      fill="outline"
+      class="refresh-button"
+      [disabled]="cargandoNoticias"
+      (click)="cargarNoticias()"
+    >
+      @if (cargandoNoticias) {
+        <ion-spinner
+          name="crescent"
+          slot="start"
+        ></ion-spinner>
+      } @else {
+        <ion-icon
+          name="refresh-outline"
+          slot="start"
+        ></ion-icon>
+      }
+
+      Actualizar
+    </ion-button>
+  </div>
+
+  @if (cargandoNoticias && noticias.length === 0) {
+    <article class="loading-card">
+      <ion-spinner name="crescent"></ion-spinner>
+
+      <div>
+        <h3>Cargando noticias</h3>
+
+        <p>
+          Consultando artículos reales mediante la API REST.
+        </p>
+      </div>
+    </article>
+  }
+
+  @if (mensajeErrorNoticias) {
+    <article class="error-card">
+      <div class="error-icon">
+        <ion-icon name="alert-circle-outline"></ion-icon>
+      </div>
+
+      <div class="error-content">
+        <h3>No se pudieron cargar las noticias</h3>
+
+        <p>{{ mensajeErrorNoticias }}</p>
+
+        <ion-button
+          size="small"
+          fill="outline"
+          (click)="cargarNoticias()"
+        >
+          Intentar nuevamente
+        </ion-button>
+      </div>
+    </article>
+  }
+
+  @if (!cargandoNoticias && !mensajeErrorNoticias) {
+    <div class="news-list">
+      @for (noticia of noticias; track noticia.id) {
+        <article
+          class="news-card"
+          role="button"
+          tabindex="0"
+          (click)="abrirNoticia(noticia)"
+          (keydown.enter)="abrirNoticia(noticia)"
+        >
+          <div class="news-icon">
+            <ion-icon name="newspaper-outline"></ion-icon>
+          </div>
+
+          <div class="news-content">
+            <div class="news-metadata">
+              <span class="category">
+                {{ noticia.categoria }}
+              </span>
+
+              <span class="date">
+                <ion-icon name="calendar-outline"></ion-icon>
+
+                {{ formatearFecha(noticia.fecha) }}
+              </span>
+            </div>
+
+            <h3>{{ noticia.titulo }}</h3>
+
+            <p>{{ noticia.resumen }}</p>
+
+            <div class="news-footer">
+              <span class="news-author">
+                Por {{ noticia.autor }}
+              </span>
+
+              <ion-button
+                fill="clear"
+                size="small"
+                class="read-button"
+                (click)="
+                  $event.stopPropagation();
+                  abrirNoticia(noticia)
+                "
+              >
+                Leer artículo
+              </ion-button>
+            </div>
+          </div>
+        </article>
+      }
+    </div>
+  }
+
+  @if (
+    !cargandoNoticias &&
+    !mensajeErrorNoticias &&
+    noticias.length === 0
+  ) {
+    <article class="empty-card">
+      <ion-icon name="newspaper-outline"></ion-icon>
+
+      <div>
+        <h3>No hay noticias disponibles</h3>
+
+        <p>
+          Actualiza la sección para consultar nuevos artículos.
+        </p>
+      </div>
+    </article>
+  }
+</section>

@@ -1,0 +1,500 @@
+ion-header {
+  background: #f8fafc;
+}
+
+ion-toolbar {
+  --background: #f8fafc;
+  --min-height: 78px;
+  --padding-start: 20px;
+  --padding-end: 12px;
+}
+
+ion-content {
+  --background: #f8fafc;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.welcome-text {
+  margin: 0 0 2px;
+  color: #64748b;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+ion-title {
+  padding: 0;
+  color: #0f172a;
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.notification-button {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  --border-radius: 14px;
+  --background: #ffffff;
+  --color: #0f172a;
+  --box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+}
+
+.notification-button ion-icon {
+  font-size: 22px;
+}
+
+.notification-dot {
+  position: absolute;
+  top: 9px;
+  right: 10px;
+  width: 8px;
+  height: 8px;
+  background: #ef4444;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+}
+
+.page-container {
+  padding: 0 18px 110px;
+}
+
+.hero-section {
+  padding: 10px 2px 20px;
+}
+
+.hero-subtitle {
+  margin: 0 0 8px;
+  color: #2563eb;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.hero-section h1 {
+  margin: 0 0 8px;
+  color: #0f172a;
+  font-size: 28px;
+  line-height: 1.15;
+  font-weight: 800;
+}
+
+.hero-description {
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.progress-card {
+  padding: 20px;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  border-radius: 24px;
+  color: #ffffff;
+  box-shadow: 0 18px 35px rgba(37, 99, 235, 0.25);
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 18px;
+}
+
+.section-label {
+  margin: 0 0 5px;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 13px;
+}
+
+.progress-card h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.progress-percentage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 55px;
+  height: 55px;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 18px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+ion-progress-bar {
+  height: 8px;
+  --background: rgba(255, 255, 255, 0.25);
+  --progress-background: #ffffff;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.progress-footer {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 14px;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 12px;
+}
+
+.progress-footer ion-icon {
+  font-size: 18px;
+}
+
+.section {
+  margin-top: 28px;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.section-header h2 {
+  margin: 0;
+  color: #0f172a;
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.view-all-button {
+  padding: 6px 0;
+  background: transparent;
+  border: none;
+  color: #2563eb;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.quick-actions {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.quick-action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+  padding: 0;
+  background: transparent;
+  border: none;
+}
+
+.quick-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 58px;
+  border-radius: 19px;
+}
+
+.quick-icon ion-icon {
+  font-size: 25px;
+}
+
+.quick-icon.blue {
+  background: #dbeafe;
+  color: #2563eb;
+}
+
+.quick-icon.purple {
+  background: #ede9fe;
+  color: #7c3aed;
+}
+
+.quick-icon.orange {
+  background: #ffedd5;
+  color: #ea580c;
+}
+
+.quick-icon.green {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.quick-action span {
+  color: #334155;
+  font-size: 11px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.task-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-bottom: 13px;
+  padding: 16px;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(15, 23, 42, 0.06);
+  overflow: hidden;
+}
+
+.task-color {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 4px;
+}
+
+.blue-border {
+  background: #2563eb;
+}
+
+.orange-border {
+  background: #f59e0b;
+}
+
+.task-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 47px;
+  height: 47px;
+  border-radius: 15px;
+}
+
+.task-icon ion-icon {
+  font-size: 22px;
+}
+
+.blue-background {
+  background: #dbeafe;
+  color: #2563eb;
+}
+
+.orange-background {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.task-information {
+  flex: 1;
+  min-width: 0;
+}
+
+.task-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+ion-badge {
+  --padding-start: 8px;
+  --padding-end: 8px;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.task-priority {
+  color: #ef4444;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.task-priority.medium {
+  color: #d97706;
+}
+
+.task-information h3 {
+  margin: 8px 0 7px;
+  color: #0f172a;
+  font-size: 14px;
+  line-height: 1.35;
+  font-weight: 700;
+}
+
+.task-date {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #64748b;
+  font-size: 11px;
+}
+
+.task-date ion-icon {
+  font-size: 15px;
+}
+
+.summary-section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.summary-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px 8px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+}
+
+.summary-card strong {
+  margin-bottom: 4px;
+  color: #0f172a;
+  font-size: 20px;
+}
+
+.summary-card span {
+  color: #64748b;
+  font-size: 10px;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .page-container {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+}
+.brand-text{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.brand-text ion-title{
+  padding:0;
+  margin:0;
+  font-size:28px;
+  font-weight:700;
+}
+
+.brand-text .welcome-text{
+  margin:0;
+}
+
+/* Encabezado con logo */
+
+.brand-area {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  min-width: 0;
+}
+
+.header-logo {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  object-fit: cover;
+  border-radius: 15px;
+  background: #ffffff;
+  box-shadow: 0 7px 18px rgba(37, 99, 235, 0.16);
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
+
+.brand-text ion-title {
+  max-width: 180px;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  font-size: 21px;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.brand-text .welcome-text {
+  margin: 0 0 2px;
+}
+
+/* Prioridad baja */
+
+.green-border {
+  background: #16a34a;
+}
+
+.green-background {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.task-priority.low {
+  color: #16a34a;
+}
+
+/* Tarjeta cuando no existen tareas pendientes */
+
+.empty-tasks-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  box-shadow: 0 7px 22px rgba(15, 23, 42, 0.05);
+}
+
+.empty-tasks-card > ion-icon {
+  flex-shrink: 0;
+  padding: 11px;
+  background: #dcfce7;
+  border-radius: 14px;
+  color: #16a34a;
+  font-size: 28px;
+}
+
+.empty-tasks-card h3 {
+  margin: 0 0 4px;
+  color: #0f172a !important;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.empty-tasks-card p {
+  margin: 0;
+  color: #64748b !important;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+/* Modo oscuro */
+
+:host-context(.ion-palette-dark) .header-logo {
+  background: #1e293b;
+  box-shadow: 0 7px 18px rgba(0, 0, 0, 0.3);
+}
+
+:host-context(.ion-palette-dark) .empty-tasks-card {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+:host-context(.ion-palette-dark) .empty-tasks-card h3 {
+  color: #f8fafc !important;
+}
+
+:host-context(.ion-palette-dark) .empty-tasks-card p {
+  color: #94a3b8 !important;
+}

@@ -1,0 +1,263 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <div class="header-container">
+      <div>
+        <p class="header-label">
+          Planificación académica
+        </p>
+
+        <h1>Mi agenda</h1>
+      </div>
+
+      <div
+        class="network-status"
+        [class.offline]="
+          !estadoConexion.connected
+        "
+      >
+        <ion-icon
+          [name]="
+            estadoConexion.connected
+              ? 'wifi-outline'
+              : 'cloud-offline-outline'
+          "
+        ></ion-icon>
+
+        <span>{{ textoConexion() }}</span>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="page-container">
+
+    <section class="month-card">
+      <div class="month-header">
+        <div>
+          <p>Calendario académico</p>
+          <h2>{{ nombreMes }}</h2>
+        </div>
+
+        <div class="calendar-icon">
+          <ion-icon
+            name="calendar-outline"
+          ></ion-icon>
+        </div>
+      </div>
+
+      <div class="week-days">
+        <span>Lun</span>
+        <span>Mar</span>
+        <span>Mié</span>
+        <span>Jue</span>
+        <span>Vie</span>
+        <span>Sáb</span>
+        <span>Dom</span>
+      </div>
+
+      <div class="calendar-grid">
+        @for (
+          dia of diasCalendario;
+          track $index
+        ) {
+          @if (dia === null) {
+            <span class="empty-day"></span>
+          } @else {
+            <button
+              type="button"
+              [class.selected]="
+                esFechaSeleccionada(dia)
+              "
+              [class.has-events]="
+                tieneEventos(dia)
+              "
+              (click)="seleccionarDia(dia)"
+            >
+              {{ dia }}
+
+              @if (tieneEventos(dia)) {
+                <span class="event-dot"></span>
+              }
+            </button>
+          }
+        }
+      </div>
+    </section>
+
+    <section class="selected-date-section">
+      <div class="section-header">
+        <div>
+          <p>Fecha seleccionada</p>
+
+          <h2>
+            {{
+              formatearFecha(
+                fechaSeleccionada
+              )
+            }}
+          </h2>
+        </div>
+
+        <ion-badge color="primary">
+          {{ eventosSeleccionados.length }}
+
+          evento{{
+            eventosSeleccionados.length === 1
+              ? ''
+              : 's'
+          }}
+        </ion-badge>
+      </div>
+
+      @if (
+        eventosSeleccionados.length > 0
+      ) {
+        @for (
+          evento of eventosSeleccionados;
+          track evento.id
+        ) {
+          <article
+            class="event-card"
+            [class.exam]="
+              evento.tipo === 'examen'
+            "
+            [class.meeting]="
+              evento.tipo === 'reunion'
+            "
+          >
+            <div class="event-time">
+              <ion-icon
+                name="time-outline"
+              ></ion-icon>
+
+              <span>{{ evento.hora }}</span>
+            </div>
+
+            <div class="event-content">
+              <div class="event-heading">
+                <ion-badge
+                  [color]="colorEvento(evento)"
+                >
+                  {{ textoTipoEvento(evento) }}
+                </ion-badge>
+              </div>
+
+              <h3>{{ evento.titulo }}</h3>
+
+              <p>
+                <ion-icon
+                  name="school-outline"
+                ></ion-icon>
+
+                {{ evento.materia }}
+              </p>
+            </div>
+          </article>
+        }
+      } @else {
+        <div class="empty-day-card">
+          <ion-icon
+            name="checkmark-circle-outline"
+          ></ion-icon>
+
+          <div>
+            <h3>Día libre</h3>
+
+            <p>
+              No tienes eventos para esta fecha.
+            </p>
+          </div>
+        </div>
+      }
+    </section>
+
+    <section class="upcoming-section">
+      <div class="section-title">
+        <h2>Próximos eventos</h2>
+
+        <span>
+          {{ proximosEventos.length }}
+          registrados
+        </span>
+      </div>
+
+      <div class="timeline">
+        @for (
+          evento of proximosEventos;
+          track evento.id
+        ) {
+          <article class="timeline-item">
+            <div
+              class="timeline-marker"
+              [class.exam]="
+                evento.tipo === 'examen'
+              "
+              [class.meeting]="
+                evento.tipo === 'reunion'
+              "
+            ></div>
+
+            <div class="timeline-card">
+              <div class="timeline-date">
+                <ion-icon
+                  name="calendar-outline"
+                ></ion-icon>
+
+                <span>
+                  {{
+                    formatearFecha(
+                      evento.fecha
+                    )
+                  }}
+                </span>
+
+                <span>•</span>
+                <span>{{ evento.hora }}</span>
+              </div>
+
+              <h3>{{ evento.titulo }}</h3>
+              <p>{{ evento.materia }}</p>
+            </div>
+          </article>
+        }
+      </div>
+    </section>
+
+    <section
+      class="connection-card"
+      [class.offline]="
+        !estadoConexion.connected
+      "
+    >
+      <div class="connection-icon">
+        <ion-icon
+          [name]="
+            estadoConexion.connected
+              ? 'cloud-outline'
+              : 'cloud-offline-outline'
+          "
+        ></ion-icon>
+      </div>
+
+      <div>
+        <h3>
+          {{
+            estadoConexion.connected
+              ? 'Agenda sincronizada'
+              : 'Modo sin conexión'
+          }}
+        </h3>
+
+        <p>
+          {{
+            estadoConexion.connected
+              ? 'Tus tareas se reflejan automáticamente en la agenda.'
+              : 'Las tareas guardadas siguen disponibles sin Internet.'
+          }}
+        </p>
+      </div>
+    </section>
+
+  </div>
+</ion-content>

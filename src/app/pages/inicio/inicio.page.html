@@ -1,0 +1,242 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <div class="header-content">
+
+      <div class="brand-area">
+        <img src="assets/icon/logo.png" alt="Logo de UniTask" class="header-logo" />
+
+        <div class="brand-text">
+          <p class="welcome-text">
+            {{ saludoActual }}
+          </p>
+
+          <ion-title>
+            {{ nombreUsuario }}
+          </ion-title>
+        </div>
+      </div>
+
+      <ion-button fill="clear" class="notification-button" aria-label="Notificaciones">
+        <ion-icon name="notifications-outline"></ion-icon>
+        <span class="notification-dot"></span>
+      </ion-button>
+
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="page-container">
+
+    <!-- Hero -->
+    <section class="hero-section">
+      <p class="hero-subtitle">{{ fechaActual }}</p>
+      <h1>Organiza tu día académico</h1>
+
+      <p class="hero-description">
+        Tienes {{ cantidadPendientes }}
+        tarea{{ cantidadPendientes === 1 ? '' : 's' }}
+        pendiente{{ cantidadPendientes === 1 ? '' : 's' }}.
+      </p>
+    </section>
+
+    <!-- Progreso -->
+    <section class="progress-card">
+      <div class="progress-header">
+        <div>
+          <p class="section-label">Progreso general</p>
+
+          <h2>
+            {{ cantidadCompletadas }}
+            de
+            {{ cantidadTotal }}
+            tareas
+          </h2>
+        </div>
+
+        <div class="progress-percentage">
+          {{ porcentajeTexto }}%
+        </div>
+      </div>
+
+      <ion-progress-bar [value]="porcentajeProgreso">
+      </ion-progress-bar>
+
+      <div class="progress-footer">
+        <ion-icon name="checkmark-circle-outline">
+        </ion-icon>
+
+        <span>
+          {{
+          cantidadTotal === 0
+          ? 'Agrega tu primera tarea'
+          : porcentajeTexto === 100
+          ? '¡Completaste todas tus tareas!'
+          : 'Buen trabajo, sigue avanzando'
+          }}
+        </span>
+      </div>
+    </section>
+
+    <!-- Accesos rápidos -->
+    <section class="section">
+
+      <div class="section-header">
+        <h2>Accesos rápidos</h2>
+      </div>
+
+      <div class="quick-actions">
+
+        <button class="quick-action" (click)="irATareas()">
+
+          <div class="quick-icon blue">
+            <ion-icon name="add-outline"></ion-icon>
+          </div>
+
+          <span>Nueva tarea</span>
+
+        </button>
+
+        <button class="quick-action" (click)="irAAgenda()">
+
+          <div class="quick-icon purple">
+            <ion-icon name="calendar-outline"></ion-icon>
+          </div>
+
+          <span>Agenda</span>
+
+        </button>
+
+        <button class="quick-action" (click)="irARecursos()">
+
+          <div class="quick-icon orange">
+            <ion-icon name="qr-code-outline"></ion-icon>
+          </div>
+
+          <span>Escanear QR</span>
+
+        </button>
+
+        <button type="button" class="quick-action" (click)="irARecursos()">
+          <div class="quick-icon green">
+            <ion-icon name="location-outline"></ion-icon>
+          </div>
+
+          <span>Mapa</span>
+        </button>
+
+      </div>
+
+    </section>
+
+    <!-- Próximas tareas -->
+    <section class="section">
+
+      <div class="section-header">
+
+        <h2>Próximas tareas</h2>
+
+        <button class="view-all-button" (click)="irATareas()">
+          Ver todas
+        </button>
+
+      </div>
+
+      @if (proximasTareas.length > 0) {
+
+      @for (tarea of proximasTareas; track tarea.id) {
+
+      <article class="task-card">
+
+        <div class="task-color" [class.blue-border]="tarea.prioridad === 'alta'"
+          [class.orange-border]="tarea.prioridad === 'media'" [class.green-border]="tarea.prioridad === 'baja'">
+        </div>
+
+        <div class="task-icon" [class.blue-background]="tarea.prioridad === 'alta'"
+          [class.orange-background]="tarea.prioridad === 'media'" [class.green-background]="tarea.prioridad === 'baja'">
+
+          <ion-icon name="book-outline"></ion-icon>
+
+        </div>
+
+        <div class="task-information">
+
+          <div class="task-top">
+
+            <ion-badge [color]="colorPrioridad(tarea)">
+              {{ tarea.materia }}
+            </ion-badge>
+
+            <span class="task-priority" [class.medium]="tarea.prioridad === 'media'"
+              [class.low]="tarea.prioridad === 'baja'">
+
+              {{ textoPrioridad(tarea) }}
+
+            </span>
+
+          </div>
+
+          <h3>{{ tarea.titulo }}</h3>
+
+          <div class="task-date">
+
+            <ion-icon name="time-outline">
+            </ion-icon>
+
+            <span>
+              Vence el {{ formatearFecha(tarea.fecha) }}
+            </span>
+
+          </div>
+
+        </div>
+
+      </article>
+
+      }
+
+      } @else {
+
+      <article class="empty-tasks-card">
+
+        <ion-icon name="checkmark-circle-outline">
+        </ion-icon>
+
+        <div>
+
+          <h3>No tienes tareas pendientes</h3>
+
+          <p>
+            Has completado todas tus actividades.
+          </p>
+
+        </div>
+
+      </article>
+
+      }
+
+    </section>
+
+    <!-- Resumen -->
+    <section class="summary-section">
+
+      <div class="summary-card">
+        <strong>{{ cantidadPendientes }}</strong>
+        <span>Pendientes</span>
+      </div>
+
+      <div class="summary-card">
+        <strong>{{ cantidadCompletadas }}</strong>
+        <span>Completadas</span>
+      </div>
+
+      <div class="summary-card">
+        <strong>{{ tareasEstaSemana }}</strong>
+        <span>Esta semana</span>
+      </div>
+
+    </section>
+
+  </div>
+</ion-content>
