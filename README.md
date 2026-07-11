@@ -71,6 +71,48 @@ src/
  └── theme/
 ```
 
+## Capturas de pantalla
+
+### Agenda académica
+
+<img src="screenshots/agenda.jpg" alt="Agenda académica de UniTask" width="320">
+
+### Bluetooth Low Energy
+
+<img src="screenshots/bluetooth.jpg" alt="Búsqueda de dispositivos Bluetooth LE" width="320">
+
+### Cámara y fotografías
+
+<img src="screenshots/camara.jpg" alt="Módulo de cámara de UniTask" width="320">
+
+### Mapa y geolocalización
+
+<img src="screenshots/mapa.jpg" alt="Mapa interactivo con geolocalización" width="320">
+
+### Noticias tecnológicas
+
+<img src="screenshots/noticias.jpg" alt="Noticias obtenidas mediante API REST" width="320">
+
+### Panel de notificaciones
+
+<img src="screenshots/notificaciones.jpg" alt="Panel de notificaciones de UniTask" width="320">
+
+### Perfil del usuario
+
+<img src="screenshots/perfil.jpg" alt="Perfil y configuración del usuario" width="320">
+
+### Podcasts educativos
+
+<img src="screenshots/podcasts.jpg" alt="Reproductor de podcasts educativos" width="320">
+
+### Escáner QR
+
+<img src="screenshots/qr.jpg" alt="Escáner de códigos QR" width="320">
+
+### Recursos académicos
+
+<img src="screenshots/recursos.jpg" alt="Pantalla de recursos académicos" width="320">
+
 ## Desarrollador
 
 **Darian de Jesús Suárez Polanco**
