@@ -498,3 +498,181 @@ ion-badge {
 :host-context(.ion-palette-dark) .empty-tasks-card p {
   color: #94a3b8 !important;
 }
+
+.notification-count {
+  position: absolute;
+  top: 3px;
+  right: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 17px;
+  height: 17px;
+  padding: 0 4px;
+  background: #ef4444;
+  border: 2px solid #ffffff;
+  border-radius: 999px;
+  color: #ffffff;
+  font-size: 8px;
+  font-weight: 800;
+}
+
+.notification-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 998;
+  background: rgba(15, 23, 42, 0.24);
+}
+
+.notification-panel {
+  position: fixed;
+  top: 72px;
+  right: 14px;
+  left: 14px;
+  z-index: 999;
+  max-width: 420px;
+  margin-left: auto;
+  padding: 17px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 22px;
+  box-shadow: 0 22px 55px rgba(15, 23, 42, 0.22);
+}
+
+.notification-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 13px;
+}
+
+.notification-header span {
+  color: #64748b;
+  font-size: 10px;
+}
+
+.notification-header h2 {
+  margin: 2px 0 0;
+  color: #0f172a;
+  font-size: 18px;
+}
+
+.notification-header button {
+  width: 34px;
+  height: 34px;
+  background: #f1f5f9;
+  border: none;
+  border-radius: 11px;
+  color: #475569;
+  font-size: 22px;
+}
+
+.notification-list {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.notification-item {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  width: 100%;
+  padding: 12px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 15px;
+  text-align: left;
+}
+
+.notification-item-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 39px;
+  height: 39px;
+  background: #dbeafe;
+  border-radius: 12px;
+  color: #2563eb;
+}
+
+.notification-item strong,
+.notification-item span {
+  display: block;
+}
+
+.notification-item strong {
+  margin-bottom: 4px;
+  color: #0f172a;
+  font-size: 11px;
+}
+
+.notification-item span {
+  color: #64748b;
+  font-size: 9px;
+}
+
+.view-notifications-button {
+  width: 100%;
+  margin-top: 13px;
+  padding: 12px;
+  background: #2563eb;
+  border: none;
+  border-radius: 13px;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.empty-notifications {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 10px;
+  text-align: center;
+}
+
+.empty-notifications ion-icon {
+  margin-bottom: 9px;
+  color: #16a34a;
+  font-size: 34px;
+}
+
+.empty-notifications strong {
+  color: #0f172a;
+  font-size: 13px;
+}
+
+.empty-notifications span {
+  margin-top: 4px;
+  color: #64748b;
+  font-size: 10px;
+}
+
+:host-context(.ion-palette-dark)
+  .notification-panel {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+:host-context(.ion-palette-dark)
+  .notification-header h2,
+:host-context(.ion-palette-dark)
+  .notification-item strong,
+:host-context(.ion-palette-dark)
+  .empty-notifications strong {
+  color: #f8fafc;
+}
+
+:host-context(.ion-palette-dark)
+  .notification-item {
+  background: #0f172a;
+  border-color: #334155;
+}
+
+:host-context(.ion-palette-dark)
+  .notification-header button {
+  background: #334155;
+  color: #f8fafc;
+}

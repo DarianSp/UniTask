@@ -1,9 +1,14 @@
+
 <ion-header class="ion-no-border">
   <ion-toolbar>
     <div class="header-content">
 
       <div class="brand-area">
-        <img src="assets/icon/logo.png" alt="Logo de UniTask" class="header-logo" />
+        <img
+          src="assets/icon/logo.png"
+          alt="Logo de UniTask"
+          class="header-logo"
+        />
 
         <div class="brand-text">
           <p class="welcome-text">
@@ -16,14 +21,104 @@
         </div>
       </div>
 
-      <ion-button fill="clear" class="notification-button" aria-label="Notificaciones">
+      <ion-button
+        fill="clear"
+        class="notification-button"
+        aria-label="Ver notificaciones"
+        (click)="alternarNotificaciones()"
+      >
         <ion-icon name="notifications-outline"></ion-icon>
-        <span class="notification-dot"></span>
+
+        @if (cantidadPendientes > 0) {
+          <span class="notification-count">
+            {{
+              cantidadPendientes > 9
+                ? '9+'
+                : cantidadPendientes
+            }}
+          </span>
+        }
       </ion-button>
 
     </div>
   </ion-toolbar>
 </ion-header>
+
+@if (mostrarNotificaciones) {
+  <div
+    class="notification-backdrop"
+    (click)="cerrarNotificaciones()"
+  ></div>
+
+  <section class="notification-panel">
+    <div class="notification-header">
+      <div>
+        <span>Actividad académica</span>
+        <h2>Notificaciones</h2>
+      </div>
+
+      <button
+        type="button"
+        aria-label="Cerrar notificaciones"
+        (click)="cerrarNotificaciones()"
+      >
+        ×
+      </button>
+    </div>
+
+    @if (proximasTareas.length > 0) {
+      <div class="notification-list">
+        @for (tarea of proximasTareas; track tarea.id) {
+          <button
+            type="button"
+            class="notification-item"
+            (click)="
+              cerrarNotificaciones();
+              irATareas()
+            "
+          >
+            <div class="notification-item-icon">
+              <ion-icon name="time-outline"></ion-icon>
+            </div>
+
+            <div>
+              <strong>{{ tarea.titulo }}</strong>
+
+              <span>
+                {{ tarea.materia }} ·
+                vence el
+                {{ formatearFecha(tarea.fecha) }}
+              </span>
+            </div>
+          </button>
+        }
+      </div>
+
+      <button
+        type="button"
+        class="view-notifications-button"
+        (click)="
+          cerrarNotificaciones();
+          irATareas()
+        "
+      >
+        Ver todas las tareas
+      </button>
+    } @else {
+      <div class="empty-notifications">
+        <ion-icon
+          name="checkmark-circle-outline"
+        ></ion-icon>
+
+        <strong>No tienes notificaciones</strong>
+
+        <span>
+          Todas tus actividades están al día.
+        </span>
+      </div>
+    }
+  </section>
+}
 
 <ion-content [fullscreen]="true">
   <div class="page-container">

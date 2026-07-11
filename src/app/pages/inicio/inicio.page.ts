@@ -55,6 +55,7 @@ import { PerfilService } from '../../services/perfil.service';
 export class InicioPage implements OnInit, OnDestroy {
   nombreUsuario = 'Usuario';
   tareas: Tarea[] = [];
+  mostrarNotificaciones = false;
 
   private suscripcion?: Subscription;
 
@@ -245,6 +246,15 @@ export class InicioPage implements OnInit, OnDestroy {
     this.router.navigate(['/tabs/perfil']);
   }
 
+  alternarNotificaciones(): void {
+    this.mostrarNotificaciones =
+      !this.mostrarNotificaciones;
+  }
+
+  cerrarNotificaciones(): void {
+    this.mostrarNotificaciones = false;
+  }
+
   private async cargarPerfil(): Promise<void> {
     const perfil =
       await this.perfilService.obtenerPerfil();
@@ -257,4 +267,5 @@ export class InicioPage implements OnInit, OnDestroy {
       perfil.temaOscuro
     );
   }
+
 }
