@@ -113,12 +113,14 @@ src/
 
 <img src="screenshots/recursos.jpg" alt="Pantalla de recursos académicos" width="320">
 
-## Desarrollador
+## Equipo
 
-**Darian de Jesús Suárez Polanco**
+| Nombre | Matrícula | Módulo asignado |
+|---------|-----------|-----------------|
+| Darian de Jesús Suárez Polanco | 100063527 | Desarrollo completo de la aplicación UniTask |
 
-Universidad Abierta para Adultos (UAPA)
+**Universidad Abierta para Adultos (UAPA)**
 
-Proyecto Final — Programación de Dispositivos Móviles 
+Proyecto Final — Programación de Dispositivos Móviles
 
-2026
+Año: 2026
